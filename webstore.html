@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            padding:0;
+            margin:0;
+        }
+        #border{
+            width:385px;
+            padding:8px;
+            margin:20px;
+            border:1px solid #e0e0e1;
+        }
+        #text{
+            width:195px;
+            height:40px;
+            /*color:#747474;*/
+        }
+        #search{
+            width:140px;
+            height:37px;
+            color:#949494;
+        }
+        #delete{
+            height:22px;
+            width:22px;
+            float:right;
+            color:#fff;
+            text-align:center;
+            background-color:#e0e0e0;
+            border:none;
+        }
+        p{
+            margin-bottom:14px;
+        }
+        #span{
+            height:22px;
+            background-color:#e0e0e0;
+            border:1px solid #ccc;
+            margin-right:10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="border">
+        <input type="text" placeholder="请输入想要查询的商品" value="" id="text">
+        <input type="button" value="搜索" id="search" onclick="searchOnclick()">
+        <br>
+        <p>最近查询</p>
+        <button id="delete" onclick="deleteStore()">X</button>
+    </div>
+</body>
+<script>
+    if(!window.localStorage){
+		alert("你的浏览器不支持localstorage");
+	}else{
+        var border = document.getElementById("border");
+        var search = document.getElementById("search");
+        var k=localStorage.length;
+        var flag;
+
+        for(var i=k-1; i>=0; i--){
+            flag = true;
+			var key = localStorage.key(i);
+			var data = localStorage.getItem(key);
+            for(var j=k-1;j>i;j--){
+                var key0 = localStorage.key(j);
+			    var data0 = localStorage.getItem(key0);
+                if(data0 == data){
+                    flag = false;
+                }
+            }
+			if(flag){
+                border.innerHTML += "<span id='span'>"+data+"</span>";
+            }
+        }
+
+        function searchOnclick(){
+            var text = document.getElementById("text").value;
+            localStorage.setItem("k"+k, text);
+            var flag = true; 
+            for(var i=k-1; i>=0; i--){
+                var key = localStorage.key(i);
+			    var data = localStorage.getItem(key);
+                if(data == text){
+                    flag = false;
+                }
+            }
+            if(flag){
+                var spannew = document.createElement("span"); 
+                var spanold = document.getElementById("span");
+                spannew.innerHTML = text;
+                spannew.setAttribute("id","span");
+                border.insertBefore(spannew,spanold);
+            }
+            k++;
+        }
+
+        function deleteStore(){
+            var span = document.getElementById("span");
+            border.removeChild(span);
+            localStorage.clear();
+        }
+        
+    }
+	
+	// document.getElementById("removeButton").onclick = function(){
+	// 	localStorage.removeItem("sticky");
+	// }
+</script>
+</html>
