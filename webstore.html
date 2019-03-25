@@ -14,12 +14,12 @@
             width:385px;
             padding:8px;
             margin:20px;
+            position:relative;
             border:1px solid #e0e0e1;
         }
         #text{
             width:195px;
             height:40px;
-            /*color:#747474;*/
         }
         #search{
             width:140px;
@@ -34,15 +34,21 @@
             text-align:center;
             background-color:#e0e0e0;
             border:none;
-        }
-        p{
-            margin-bottom:14px;
+            position:absolute; 
+            right:10px; 
+            bottom:20px;
         }
         #span{
             height:22px;
             background-color:#e0e0e0;
             border:1px solid #ccc;
             margin-right:10px;
+            margin-bottom:14px;
+            display:inline-block;
+        }
+        #bottom{
+            width:360px;
+            margin-top:14px;
         }
     </style>
 </head>
@@ -51,7 +57,8 @@
         <input type="text" placeholder="请输入想要查询的商品" value="" id="text">
         <input type="button" value="搜索" id="search" onclick="searchOnclick()">
         <br>
-        <p>最近查询</p>
+        最近搜索
+        <div id="bottom"></div>
         <button id="delete" onclick="deleteStore()">X</button>
     </div>
 </body>
@@ -61,11 +68,11 @@
 	}else{
         var border = document.getElementById("border");
         var search = document.getElementById("search");
+        var bottom = document.getElementById("bottom");
         var k=localStorage.length;
-        var flag;
 
         for(var i=k-1; i>=0; i--){
-            flag = true;
+            var flag = true;
 			var key = localStorage.key(i);
 			var data = localStorage.getItem(key);
             for(var j=k-1;j>i;j--){
@@ -76,7 +83,7 @@
                 }
             }
 			if(flag){
-                border.innerHTML += "<span id='span'>"+data+"</span>";
+                bottom.innerHTML += "<span id='span'>"+data+"</span>";
             }
         }
 
@@ -96,21 +103,16 @@
                 var spanold = document.getElementById("span");
                 spannew.innerHTML = text;
                 spannew.setAttribute("id","span");
-                border.insertBefore(spannew,spanold);
+                bottom.insertBefore(spannew,spanold);
             }
             k++;
         }
 
         function deleteStore(){
-            var span = document.getElementById("span");
-            border.removeChild(span);
+            alert("是否全部清除？");
+            bottom.innerHTML = "";
             localStorage.clear();
-        }
-        
+        }    
     }
-	
-	// document.getElementById("removeButton").onclick = function(){
-	// 	localStorage.removeItem("sticky");
-	// }
 </script>
 </html>
