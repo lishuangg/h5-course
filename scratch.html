@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>刮奖</title>
+    <style>
+        *{
+            padding:0;
+            margin:0;
+        }
+        .border{
+            position:relative;
+            margin-left:100px;
+            margin-top:100px;
+        }
+        #background{
+            width:200px;
+            height:100px;
+            line-height:100px;
+            text-align:center;
+            font-weight:bold;
+            font-size:40px;
+            color:red;
+            position:absolute;
+            top:0;
+            left:0;
+        }
+        #canvas{
+            position:absolute;
+            background-color:transparent;
+            top:0;
+            left:0;
+        }
+    </style>
+</head>
+<body>
+    <div class="border">
+        <div id="background"></div>
+        <canvas id="canvas" width="200" height="100"></canvas>
+    </div>
+</body>
+<script>
+    var background = document.getElementById("background");
+    var canvas = document.getElementById("canvas");
+    var ctx = canvas.getContext("2d");
+
+    var width = canvas.width;
+    var height = canvas.height;
+    var offsetLeft = canvas.offsetLeft;
+    var offsetTop = canvas.offsetTop;
+    var mouseDown = false;
+    var mouseIn = false;
+    
+    ctx.beginPath();
+    ctx.fillStyle = "#ccc";
+    ctx.fillRect(0,0,width,height);
+    ctx.closePath();
+
+    ctx.globalCompositeOperation="destination-out";
+
+    var prize = ['一等奖','二等奖','三等奖','谢谢参与'];
+    background.innerHTML = prize[Math.floor(Math.random()*4)];
+
+    canvas.addEventListener('mousedown', function(e){
+        e.preventDefault();
+        mouseDown = true;
+    })
+    canvas.addEventListener('mouseup', function(e){
+        e.preventDefault();
+        mouseDown = false;
+    })
+    canvas.addEventListener('mouseover', function(e){
+        e.preventDefault();
+        mouseIn = true;
+    })
+    canvas.addEventListener('mouseout', function(e){
+        e.preventDefault();
+        mouseIn = false;
+    })
+    canvas.addEventListener('mousemove', function(e){
+        var area = 0;
+        var data = ctx.getImageData(0,0,width,height).data;
+        var length = data.length;
+        e.preventDefault();
+        if(!mouseDown || !mouseIn){
+            return ;
+        }
+        ctx.beginPath();
+        ctx.arc(e.offsetX,e.offsetY,15,0,Math.PI*2)
+        ctx.fill();
+        for(var i=0; i<length; i++){
+            if(data[i] === 0){
+            area ++;
+            }
+        }
+        if(area > length*0.85){
+            ctx.fillRect(0,0,width,height);
+        }
+    })
+</script>
+</html>
+
+
