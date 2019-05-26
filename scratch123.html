@@ -40,7 +40,6 @@
         <div id="background"></div>
         <canvas id="canvas" width="200" height="100"></canvas>
     </div>
-    
 </body>
 <script>
     var background = document.getElementById("background");
@@ -80,10 +79,10 @@
         e.preventDefault();
         mouseIn = false;
     })
-    // canvas.addEventListener('touchend', function(e){
-    //   e.preventDefault();
-    //   mouseDown = false;
-    // })
+    canvas.addEventListener('touchend', function(e){
+      e.preventDefault();
+      mouseDown = false;
+    })
     canvas.addEventListener('mousemove', function(e){
         var area = 0;
         var data = ctx.getImageData(0,0,width,height).data;
@@ -104,29 +103,26 @@
             ctx.fillRect(0,0,width,height);
         }
     })
-    // canvas.addEventListener('touchmove', function(e){
-    //   var rect = e.target.getBoundingClientRect();
-    //   var completed = 0;
-    //   var data = ctx.getImageData(0,0,200,100).data;
-    //   var length = data.length;
-    //   e.preventDefault();
-    //   if(!mouseDown){
-    //     return;
-    //   }
-    //   ctx.beginPath();
-    //   ctx.arc(e.targetTouches[0].pageX - rect.left, e.targetTouches[0].pageY - rect.top, 10, 0, Math.PI *2)
-    //   ctx.fill();
-    //   // 刮的数量到一半时，打印完成刮奖，4个数记录1个相素的rgba值，判断a值为0的超过一半即可
-    //   for(var i=0;i<length;i++){
-    //     if(data[i] === 0){
-    //       completed +=1;
-    //     }
-    //   }
-    //   if(completed > length*0.85){
-    //     ctx.fillRect(0,0,width,height);
-    //   }
- 
-    // })
-
+    canvas.addEventListener('touchmove', function(e){
+      var rect = e.target.getBoundingClientRect();
+      var completed = 0;
+      var data = ctx.getImageData(0,0,200,100).data;
+      var length = data.length;
+      e.preventDefault();
+      if(!mouseDown){
+        return;
+      }
+      ctx.beginPath();
+      ctx.arc(e.targetTouches[0].pageX-rect.left,e.targetTouches[0].pageY-rect.top,15,0,Math.PI*2)
+      ctx.fill();
+      for(var i=0;i<length;i++){
+        if(data[i] === 0){
+          completed +=1;
+        }
+      }
+      if(completed > length*0.85){
+        ctx.fillRect(0,0,width,height);
+      } 
+    })
 </script>
 </html>
