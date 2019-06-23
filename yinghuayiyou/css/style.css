@@ -45,7 +45,7 @@ body{
 .daohang>*{
     background:#ddd;
 }
-.navbar-default{
+.navbar-default,.navbar-fixed-top,.container-fluid{
     margin:0 auto;
     border:none;
 }
@@ -81,7 +81,7 @@ body{
     background-color:#ddd;
 }
 @media screen and (min-width:1201px){
-    .head,.daohang,.foot{
+    .head,.container-fluid,.foot{
         width:1200px;
     }
     .navbar-nav li{
@@ -92,7 +92,7 @@ body{
     }
 }
 @media screen and (max-width:1200px) and (min-width:992px){
-    .head,.daohang,.foot{
+    .head,.container-fluid,.foot{
         width:970px;
     }
     .navbar-nav li{
@@ -103,7 +103,7 @@ body{
     }
 } 
 @media screen and (max-width:991px) and (min-width:769px){
-    .head,.daohang,.foot{
+    .head,.container-fluid,.foot{
         width:750px;
     }
     .navbar-nav li{
@@ -147,9 +147,14 @@ body{
         background-color:#fff;
     }
 } 
+@media screen and (max-width:400px){
+    .navbar-button{
+        font-size:16px;
+    }
+}
 /* 轮播图  */
-.carousel .slide{
-    margin:0 auto;
+.carousel,.slide{
+    padding-top:120px;
     position: relative;
 }
 .jiantouleft,.jiantouright{
@@ -199,9 +204,12 @@ body{
     display:inline;   
 }
 @media screen and (max-width:768px){
+    .carousel,.slide{
+        padding-top:78px;
+    }
     .carousel-inner>.item>img{
         max-width:160%;
-        max-height:120%;
+        max-height:160%;
     }
     .word .word-title{
         font-size:30px;
@@ -215,6 +223,15 @@ body{
     }
     .jiantouleft,.jiantouright{
         display:none;
+    }
+}
+@media screen and (max-width:400px){
+    .word .word-title{
+        font-size:18px;
+    }
+    .word .word-mobile>p{
+        font-size:14px;
+        line-height:20px;
     }
 }
 /* 搜索框 */
@@ -272,6 +289,19 @@ body{
     }
     .search-kuang{
         line-height:55px;
+    }
+}
+@media screen and (max-width:400px){
+    .search{
+        height:40px;
+    }
+    .search-kuang{
+        font-size:12px;
+        line-height:35px;
+    }
+    .search-position>img,.search-button>img{
+        width:20px;
+        height:auto;
     }
 }
 /*车辆接送*/
@@ -341,12 +371,52 @@ body{
 .cheliangjiesong-pc{
     display:inline-block;
 }
+.cheliang-mob-font{
+    position: absolute;
+    top:20%;
+    left:20%;
+}
+.cheliang-mob-font>p{
+    font-size:22px;
+    color:#666;
+    line-height:20px;
+}
+.cheliang-mob-font>.cheliang-mob-title{
+    font-size:30px;
+    color:#1c5080;
+    padding-bottom:30px;
+}
+.cheliangjiesong-mobile>img{
+    position: absolute;
+    width:20%;
+    height:auto;
+    top:20%;
+    left:0;
+}
+.cheliangjiesong-mobile>button{
+    position: absolute;
+    width:25%;
+    height:25%;
+    top:35%;
+    right:0;
+    font-size:24px;
+    color:#666;
+    border:1px solid #666;
+    border-radius:8px;
+    background:#fff;
+}
 @media screen and (max-width:1200px) and (min-width:992px){
     article{
         width:970px;
     }
     .article-cheliang{
         height:300px;
+    }
+    .cheliang-pc-font{
+        font-size:16px;
+    }
+    .cheliang-pc-font .cheliang-pc-title{
+        font-size:28px;
     }
 } 
 @media screen and (max-width:991px) and (min-width:769px){
@@ -355,6 +425,15 @@ body{
     }
     .article-cheliang{
         height:250px;
+    }
+    .cheliang-pc-font{
+        font-size:14px;
+    }
+    .cheliang-pc-font .cheliang-pc-title{
+        font-size:24px;
+    }
+    .xiangqing-pc>p,.xiangqing-pc>button{
+        font-size:22px;
     }
 }  
  @media screen and (max-width:768px){
@@ -371,49 +450,31 @@ body{
     .cheliangjiesong-mobile{
         width:100%;
         margin:0 auto;
-        height:200px; 
+        height:100%; 
         display:inline-block;
         background:#fff;
     }
     .cheliangjiesong-pc{
         display:none;
         overflow: hidden;
-    }
-    .cheliang-mob-font{
-        position: absolute;
-        top:20%;
-        left:20%;
-    }
-    .cheliang-mob-font>p{
-        font-size:22px;
-        color:#666;
-        line-height:20px;
+    }   
+} 
+@media screen and (max-width:400px){
+    .article-cheliang{
+        height:120px;
     }
     .cheliang-mob-font>.cheliang-mob-title{
-        font-size:30px;
-        color:#1c5080;
-        padding-bottom:30px;
+        font-size:24px;
+        padding-bottom:12px;
     }
-    .cheliangjiesong-mobile>img{
-        position: absolute;
-        /* width:15%;
-        height:48%; */
-        top:20%;
-        left:0;
+    .cheliang-mob-font>p{
+        font-size:14px;
+        line-height:12px;
     }
     .cheliangjiesong-mobile>button{
-        position: absolute;
-        width:25%;
-        height:25%;
-        top:35%;
-        right:0;
-        font-size:24px;
-        color:#666;
-        border:1px solid #666;
-        border-radius:8px;
-        background:#fff;
+        font-size:16px;
     }
-} 
+}
 /*热门路线*/
 .luxian{
     width:100%;
@@ -509,6 +570,26 @@ body{
         display: inline;
     }
 }
+@media screen and (max-width:400px){
+    .main-title>.p1{
+        font-size:22px;
+    }
+    .luxian-left{
+        font-size:16px;
+        padding-left:40px;
+        padding-top:12px;
+        line-height:30px;
+    }
+    .luxian-left>.price{
+        font-size:20px;
+    }
+    .luxian-button{
+        font-size:20px;
+    }
+    .button-box{
+        height:120px;
+    }
+}
 /* 签证推荐 */
 .qianzheng{
     width:100%;
@@ -570,12 +651,30 @@ body{
         display:none;
         overflow: hidden;
     }
+    .qz-font1{
+        height:50px;
+        line-height:45px;
+    }
     .button-qzbox{
         height:96px;
     }
     .qianzheng-button{
         width:36%;
         left:27%;
+    }
+}
+@media screen and (max-width:400px){
+    .qianzheng-font{
+        font-size:14px;
+    }
+    .qianzheng-font .price{
+        font-size:20px;
+    }
+    .button-qzbox{
+        height:120px;
+    }
+    .qianzheng-button{
+        font-size:20px;
     }
 }
 /* 使命与愿景 */
@@ -621,7 +720,6 @@ body{
     right:0;
     color:#fff;
     font-size:16px;
-    /* display: inline; */
 }
 .yuanjing-one>.yjone-font-pc>.p1{
     font-size:30px;
@@ -718,6 +816,9 @@ body{
     text-align: center;
 }
 @media screen and (max-width:768px){
+    .yuanjing-title{
+        padding:45px 0;
+    }
     .yuanjing-title>.p2{
         float:left;
         font-size:22px;
@@ -738,12 +839,30 @@ body{
         width:100%;
         height:auto;
     }
-    .yuanjing-one>.yjone-font-pc,.yuanjing-three-pc{
+    .yuanjing-one>.yjone-font-pc,.yuanjing-three-pc,.back{
         display:none;
         overflow:hidden;
     }
     .yuanjing-one>.yjone-font-mob,.yuanjing-three-mob{
         display: inline;
+    }
+}
+@media screen and (max-width:400px){
+    .yuanjing-title>.p2,.yuanjing-title>.p3{
+        font-size:14px;
+        line-height:30px;
+    }
+    .yuanjing-one>.yjone-font-mob{
+        font-size:16px;
+    }
+    .yuanjing-one>.yjone-font-mob>.p1{
+        font-size:20px;
+    }
+    .yuanjing-three-mob{
+        font-size:16px;
+    }
+    .yuanjing-three-mob>.three-p{
+        font-size:20px;
     }
 }
 /* 尾部黑框 */
