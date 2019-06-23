@@ -147,15 +147,23 @@ body{
         background-color:#fff;
     }
 } 
-@media screen and (max-width:400px){
+@media screen and (max-width:415px){
     .navbar-button{
         font-size:16px;
     }
 }
+.buquekuai{
+    height:120px;
+}
 /* 轮播图  */
-.carousel,.slide{
-    padding-top:120px;
+.carousel{
+    width:100%;
+    height:auto;
     position: relative;
+}
+.slide{
+    width:100%;
+    height:auto;
 }
 .jiantouleft,.jiantouright{
     position: absolute;
@@ -204,12 +212,12 @@ body{
     display:inline;   
 }
 @media screen and (max-width:768px){
-    .carousel,.slide{
-        padding-top:78px;
+    .buquekuai{
+        height:78px;
     }
     .carousel-inner>.item>img{
-        max-width:160%;
-        max-height:160%;
+        width:160%;
+        height:auto;
     }
     .word .word-title{
         font-size:30px;
@@ -225,7 +233,7 @@ body{
         display:none;
     }
 }
-@media screen and (max-width:400px){
+@media screen and (max-width:415px){
     .word .word-title{
         font-size:18px;
     }
@@ -291,7 +299,7 @@ body{
         line-height:55px;
     }
 }
-@media screen and (max-width:400px){
+@media screen and (max-width:415px){
     .search{
         height:40px;
     }
@@ -459,7 +467,7 @@ body{
         overflow: hidden;
     }   
 } 
-@media screen and (max-width:400px){
+@media screen and (max-width:415px){
     .article-cheliang{
         height:120px;
     }
@@ -570,7 +578,7 @@ body{
         display: inline;
     }
 }
-@media screen and (max-width:400px){
+@media screen and (max-width:415px){
     .main-title>.p1{
         font-size:22px;
     }
@@ -663,7 +671,7 @@ body{
         left:27%;
     }
 }
-@media screen and (max-width:400px){
+@media screen and (max-width:415px){
     .qianzheng-font{
         font-size:14px;
     }
@@ -847,7 +855,7 @@ body{
         display: inline;
     }
 }
-@media screen and (max-width:400px){
+@media screen and (max-width:415px){
     .yuanjing-title>.p2,.yuanjing-title>.p3{
         font-size:14px;
         line-height:30px;
